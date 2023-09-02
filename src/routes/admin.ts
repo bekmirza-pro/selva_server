@@ -8,6 +8,7 @@ const controller = new AdminController()
 const validator = new AdminValidator()
 const middleware = new Middleware()
 
+// Selva
 
 router.route('/all').get(middleware.auth(['admin']), controller.getAll)
 router
