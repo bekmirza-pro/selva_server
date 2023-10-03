@@ -97,7 +97,7 @@ export class ProductController {
         const product = await Product.findById(req.params.id)
 
         if (`${product?.images}` !== 'undefined') {
-            await unlink(path.join(__dirname, '../../uploads', `${product?.images}`))
+            await unlink(path.join(__dirname, '../../uploads/images', `${product?.images}`))
         }
 
         await storage.product.delete(req.params.id)

@@ -19,8 +19,12 @@ const OrderSchema = new Schema({
     name: {
         type: String
     },
+    phone_number:{
+        type:String 
+    },
     product_id: {
-        type: String
+        type: String,
+        ref:"Product"
     },
     status:{
         type: Boolean,

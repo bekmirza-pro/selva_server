@@ -10,19 +10,33 @@ export class ProductValidator {
 
     createSchema = Joi.object({
         name: Joi.string().required(),
-        description: Joi.string().required(),
+        description: {
+            uzb: Joi.string().required(),
+            rus: Joi.string().required(),
+            eng: Joi.string().required()
+        },
         price: Joi.string(),
         images: Joi.string()
     })
 
     updateSchema = Joi.object({
         name: Joi.string().required(),
-        description: Joi.string().required(),
+        description: {
+            uzb: Joi.string(),
+            rus: Joi.string(),
+            eng: Joi.string()
+        },
         price: Joi.string().required(),
         images: Joi.string()
     })
 
     create = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
+        const { description } = req.body
+
+        if (description) {
+            req.body.description = JSON.parse(description)
+        }
+
         const { error } = this.createSchema.validate(req.body)
 
         if (error) return next(error)
@@ -31,6 +45,12 @@ export class ProductValidator {
     })
 
     update = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
+        const { description } = req.body
+
+        if (description) {
+            req.body.description = JSON.parse(description)
+        }
+
         const { error } = this.updateSchema.validate(req.body)
         if (error) return next(error)
 
