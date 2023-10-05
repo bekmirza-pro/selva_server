@@ -8,6 +8,7 @@ export interface IOrder extends Document {
     phone_number:string
     product_id: string
     status: boolean
+    comment:string
     created_at: Date
 }
 
@@ -29,6 +30,9 @@ const OrderSchema = new Schema({
     status:{
         type: Boolean,
         default: true
+    },
+    comment:{
+        type: String
     },
     created_at: {
         type: Date,
