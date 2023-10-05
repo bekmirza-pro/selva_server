@@ -32,7 +32,8 @@ const OrderSchema = new Schema({
         default: true
     },
     comment:{
-        type:String 
+        type:String,
+        default: null
     },
     created_at: {
         type: Date,
