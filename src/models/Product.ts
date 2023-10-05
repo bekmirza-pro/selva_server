@@ -11,6 +11,7 @@ export interface IProduct extends Document {
     },
     price: string
     images: string[]
+    type: string
     madeAt: number
 }
 
@@ -38,6 +39,10 @@ const ProductSchema = new Schema({
     madeAt: {
         type: Number,
         default: Date.now
+    },
+    type: {
+        type: String,
+        enum: ['cooler', 'water']
     }
 })
 

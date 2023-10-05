@@ -16,7 +16,8 @@ export class ProductValidator {
             eng: Joi.string().required()
         },
         price: Joi.string(),
-        images: Joi.string()
+        images: Joi.string(),
+        type: Joi.string()
     })
 
     updateSchema = Joi.object({
@@ -27,7 +28,8 @@ export class ProductValidator {
             eng: Joi.string()
         },
         price: Joi.string().required(),
-        images: Joi.string()
+        images: Joi.string(),
+        type: Joi.string()
     })
 
     create = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
